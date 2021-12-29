@@ -43,8 +43,10 @@ In case everything works well, the answer shall be like:
 ```
 
 _Possible errors:_
-_- Password needs at least 4 characters (STATUS 400)_
-_- E-mail already registered (STATUS 400)_
+
+_1.- Password needs at least 4 characters (STATUS 400)_
+
+_2.- E-mail already registered (STATUS 400)_
 
 - User login
   `POST /login`
