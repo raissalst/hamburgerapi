@@ -1,171 +1,175 @@
-# API para receitas e avaliações das receitas
+# API - HamburgerAPP :hamburger:
 
-Este é o backend de uma aplicação para cadastro de um menu de uma hamburgueria. Apenas usuários logados poderão adicionar produtos da hamburgueria ao carrinho.
+This is the back end off the hamburger app, developed to storage food data of the app, register new users and log users in. Only logged users can add items to cart.
 
-## Endpoints
+Heroku link: https://apihamburguerapp-raissalst.herokuapp.com/
 
-A API tem um total de 7 endpoints, sendo que o usuário pode adicionar itens ao seu carrinho apenas quando logado.
+### Endpoints:
 
-O url base da API é https://apihamburgueria-raissalst.herokuapp.com/
+The API has 7 endpoints:
 
-### Cadastro
+- /register -> new user register (POST)
+- /login -> user login (POST)
+- /menulist -> get menu items (GET)
+- /cart?userId=:userId -> get user cart (GET) _need authentication_
+- /cart -> add item to cart (POST) _need authentication_
+- /cart/:itemId -> update quantity of item in cart or delete item _need authentication_
 
-POST /register
+### Request body and expected answers:
 
-### Login
+- Register new user
+  `POST /register`
 
-POST /login
-
-### Rotas que não precisam de autenticação
-
-GET /menulist
-
-Para pegar o menu da hamburgueria
-
-### Rotas que precisam de autenticação
-
-PATCH /cart/1
-DELETE /cart/1
-GET /cart?userId=1
-POST /cart
-
-### Criação de um usuário
-
-POST /register - FORMATO DA REQUISIÇÃO
-
+```json
 {
-"email": "email@mail.com",
-"password": "123456",
-"name": "ClientName",
+  "email": "email@mail.com",
+  "password": "123456",
+  "name": "Name"
 }
+```
 
-Caso dê tudo certo, a resposta será assim:(STATUS 201)
-</br>
+In case everything works well, the answer shall be like:
+`STATUS 201`
 
-"user": {
-"email": "email@mail.com",
-"name": "ClientName",
-"id": 1
-}
-
-</br>
-Possíveis erros na criação:
-A senha necessita de 4 caracteres no mínimo (Erro 400) </br>
-Email já cadastrado (Erro 400)
-</br>
-
-### Entrando na área do usuário (Login)
-
-Formato da requisição:</br>
-
+```json
 {
-"email": "email@mail.com",
-"password": "123456"
+  "user": {
+    "email": "email@mail.com",
+    "name": "Name",
+    "id": 1
+  }
 }
+```
 
-Caso dê tudo certo, a resposta será assim: (STATUS 200)</br>
-"user": {
-"email": "email@mail.com",
-"name": "ClientName",
-"id": 1
+_Possible errors:_
+_- Password needs at least 4 characters (STATUS 400)_
+_- E-mail already registered (STATUS 400)_
+
+- User login
+  `POST /login`
+
+```json
+{
+  "email": "email@mail.com",
+  "password": "123456"
 }
+```
 
-### GET Consultando menu da hamburgueria (rota sem autenticação)
+In case everything works well, the answer shall be like:
+`STATUS 200`
 
-Pode-se acessar o menu pelo endpoint:
-</br>
-https://apihamburgueria-raissalst.herokuapp.com/menulist
+```json
+{
+  "user": {
+    "email": "email@mail.com",
+    "name": "Name",
+    "id": 1
+  }
+}
+```
 
-Caso dê tudo certo, a resposta será assim: (STATUS 200)</br>
+- Get hamburger app menu items
+  `GET /menulist`
+  No request body needed.
 
+In case everything works well, the answer shall be like:
+`STATUS 200`
+
+```json
 [
-{
-"name": "Hamburguer",
-"section": "Sanduíches",
-"price": 14,
-"img": "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_960_720.jpg"
-},
-{
-"name": "X-Burguer",
-"section": "Sanduíches",
-"price": 16,
-"img": "https://cdn.pixabay.com/photo/2020/10/05/19/55/hamburger-5630646_960_720.jpg"
-},
+  {
+    "name": "menu item name",
+    "section": "menu item section",
+    "price": 20,
+    "img": "image url"
+  },
+  {
+    "name": "menu item name",
+    "section": "menu item section",
+    "price": 20,
+    "img": "image url"
+  }
 ]
+```
 
-### POST Adicionando itens ao carrinho (rota com autenticação)
+- Add items to cart (_need authentication_)
+  `POST /cart`
 
-Formato da requisição:</br>
-
+```json
 {
-"name": "X-Burguer",
-"price": 16.0,
-"quantity": 1,
-"userId": 1
+  "name": "menu item name",
+  "price": 20,
+  "quantity": 1,
+  "userId": 1
 }
+```
 
-Caso dê tudo certo, a resposta será assim: (STATUS 201)</br>
+In case everything works well, the answer shall be like:
+`STATUS 201`
 
+```json
 {
-"name": "X-Burguer",
-"price": 16,
-"quantity": 1,
-"userId": 1,
-"id": 1
+  "name": "menu item name",
+  "price": 20,
+  "quantity": 1,
+  "userId": 1,
+  "id": 1
 }
+```
 
-### GET Consultando o carrinho do usuário (rota com autenticação)
+- Get cart items (_need authentication_)
+  The logged user can access his cart items through this endpoint.
 
-O usuário pode consultar seu carrinho pelo endpoint:
-</br>
-https://apihamburgueria-raissalst.herokuapp.com/cart?userId=1
+  `GET /cart?userId=:userId`
+  No request body needed.
 
-Caso dê tudo certo, a resposta será assim: (STATUS 200)</br>
+In case everything works well, the answer shall be like:
+`STATUS 200`
+
+```json
 [
-{
-"name": "X-Burguer",
-"price": 16,
-"quantity": 1,
-"userId": 1,
-"id": 1
-}
+  {
+    "name": "menu item name",
+    "price": 20,
+    "quantity": 1,
+    "userId": 1,
+    "id": 1
+  }
 ]
+```
 
-### PATCH Alterando quantidades dos itens do carrinho (rota com autenticação)
+- Update items' quantities in cart (_need authentication_)
+  The logged user can change item's quantities in cart through this endpoint.
+  `PATCH /cart/:itemId`
 
-O usuário pode alterar quantidades dos itens em seu carrinho pelo endpoint:
-</br>
-https://apihamburgueria-raissalst.herokuapp.com/cart/2
-
-Formato da requisição:</br>
-
+```json
 {
-"quantity": 10,
-"userId": 1
+  "quantity": 10,
+  "userId": 1
 }
+```
 
-Caso dê tudo certo, a resposta será assim: (STATUS 200)</br>
-[
+In case everything works well, the answer shall be like:
+`STATUS 200`
+
+```json
 {
-"name": "X-Burguer",
-"price": 16,
-"quantity": 10,
-"userId": 1,
-"id": 1
+  "name": "menu item name",
+  "price": 20,
+  "quantity": 1,
+  "userId": 1,
+  "id": 1
 }
-]
+```
 
-### DELETE Apagando itens do carrinho (rota com autenticação)
+- Delete item from cart (_need authentication_)
+  The logged user can delete items from cart through this endpoint.
+  `DELETE /cart/:itemId`
+  No request body needed.
 
-O usuário pode remover itens do seu carrinho pelo endpoint:
-</br>
-https://apihamburgueria-raissalst.herokuapp.com/cart/2
+In case everything works well, the answer shall be like:
+`STATUS 200`
 
-Formato da requisição:</br>
-
-{}
-
-Caso dê tudo certo, a resposta será assim: (STATUS 200)</br>
-[
-{}
-]
+```json
+[{}]
+```
