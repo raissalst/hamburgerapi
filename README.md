@@ -2,7 +2,7 @@
 
 This is the back end off the hamburger app, developed to storage food data of the app, register new users and log users in. Only logged users can add items to cart.
 
-Heroku link: https://apihamburguerapp-raissalst.herokuapp.com/
+Heroku link: https://hamburgerapprlst.herokuapp.com/
 
 This is a fake-API built on JSON-Server (https://www.npmjs.com/package/json-server) and JSON-Server-Auth (https://www.npmjs.com/package/json-server-auth).
 
