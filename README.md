@@ -17,7 +17,7 @@ The API has 7 endpoints:
 
 ### Request body and expected answers:
 
-<h3 align = "center"> Register new user </h3>
+<h3 align="center">Register new user</h3>
 
 `POST /register`
 
@@ -48,8 +48,9 @@ _1.- Password needs at least 4 characters (STATUS 400)_
 
 _2.- E-mail already registered (STATUS 400)_
 
-- User login
-  `POST /login`
+<h3 align="center">User login</h3>
+
+`POST /login`
 
 ```json
 {
@@ -71,9 +72,10 @@ In case everything works well, the answer shall be like:
 }
 ```
 
-- Get hamburger app menu items
-  `GET /menulist`
-  No request body needed.
+<h3 align="center"> Get hamburger app menu items </h3>
+
+`GET /menulist`
+No request body needed.
 
 In case everything works well, the answer shall be like:
 `STATUS 200`
@@ -95,7 +97,7 @@ In case everything works well, the answer shall be like:
 ]
 ```
 
-- Add items to cart (_need authentication_)
+<h3 align="center">Add items to cart (_need authentication_)</h3>
   `POST /cart`
 
 ```json
@@ -120,11 +122,11 @@ In case everything works well, the answer shall be like:
 }
 ```
 
-- Get cart items (_need authentication_)
+<h3 align="center">Get cart items (_need authentication_)</h3>
   The logged user can access his cart items through this endpoint.
 
-  `GET /cart?userId=:userId`
-  No request body needed.
+`GET /cart?userId=:userId`
+No request body needed.
 
 In case everything works well, the answer shall be like:
 `STATUS 200`
@@ -141,7 +143,7 @@ In case everything works well, the answer shall be like:
 ]
 ```
 
-- Update items' quantities in cart (_need authentication_)
+<h3 align="center">Update items' quantities in cart (_need authentication_)</h3>
   The logged user can change item's quantities in cart through this endpoint.
   `PATCH /cart/:itemId`
 
@@ -165,7 +167,7 @@ In case everything works well, the answer shall be like:
 }
 ```
 
-- Delete item from cart (_need authentication_)
+<h3 align="center">Delete item from cart (_need authentication_)</h3>
   The logged user can delete items from cart through this endpoint.
   `DELETE /cart/:itemId`
   No request body needed.
