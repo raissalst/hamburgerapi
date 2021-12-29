@@ -17,8 +17,9 @@ The API has 7 endpoints:
 
 ### Request body and expected answers:
 
-- Register new user
-  `POST /register`
+<h3 align = "center"> Register new user </h3>
+
+`POST /register`
 
 ```json
 {
