@@ -30,6 +30,7 @@ The API has 7 endpoints:
 ```
 
 In case everything works well, the answer shall be like:
+
 `STATUS 201`
 
 ```json
@@ -60,6 +61,7 @@ _2.- E-mail already registered (STATUS 400)_
 ```
 
 In case everything works well, the answer shall be like:
+
 `STATUS 200`
 
 ```json
@@ -75,9 +77,11 @@ In case everything works well, the answer shall be like:
 <h3 align="center"> Get hamburger app menu items </h3>
 
 `GET /menulist`
+
 No request body needed.
 
 In case everything works well, the answer shall be like:
+
 `STATUS 200`
 
 ```json
@@ -98,7 +102,8 @@ In case everything works well, the answer shall be like:
 ```
 
 <h3 align="center">Add items to cart (_need authentication_)</h3>
-  `POST /cart`
+
+`POST /cart`
 
 ```json
 {
@@ -110,6 +115,7 @@ In case everything works well, the answer shall be like:
 ```
 
 In case everything works well, the answer shall be like:
+
 `STATUS 201`
 
 ```json
@@ -123,12 +129,15 @@ In case everything works well, the answer shall be like:
 ```
 
 <h3 align="center">Get cart items (_need authentication_)</h3>
-  The logged user can access his cart items through this endpoint.
+
+The logged user can access his cart items through this endpoint.
 
 `GET /cart?userId=:userId`
+
 No request body needed.
 
 In case everything works well, the answer shall be like:
+
 `STATUS 200`
 
 ```json
@@ -144,8 +153,10 @@ In case everything works well, the answer shall be like:
 ```
 
 <h3 align="center">Update items' quantities in cart (_need authentication_)</h3>
-  The logged user can change item's quantities in cart through this endpoint.
-  `PATCH /cart/:itemId`
+
+The logged user can change item's quantities in cart through this endpoint.
+
+`PATCH /cart/:itemId`
 
 ```json
 {
@@ -155,6 +166,7 @@ In case everything works well, the answer shall be like:
 ```
 
 In case everything works well, the answer shall be like:
+
 `STATUS 200`
 
 ```json
@@ -168,11 +180,15 @@ In case everything works well, the answer shall be like:
 ```
 
 <h3 align="center">Delete item from cart (_need authentication_)</h3>
-  The logged user can delete items from cart through this endpoint.
-  `DELETE /cart/:itemId`
-  No request body needed.
+
+The logged user can delete items from cart through this endpoint.
+
+`DELETE /cart/:itemId`
+
+No request body needed.
 
 In case everything works well, the answer shall be like:
+
 `STATUS 200`
 
 ```json
