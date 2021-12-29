@@ -4,6 +4,10 @@ This is the back end off the hamburger app, developed to storage food data of th
 
 Heroku link: https://apihamburguerapp-raissalst.herokuapp.com/
 
+This is a fake-API built on JSON-Server (https://www.npmjs.com/package/json-server) and JSON-Server-Auth (https://www.npmjs.com/package/json-server-auth).
+
+The original repo with the JSON-Server configuration is https://github.com/Kenzie-Academy-Brasil-Developers/json-server-base.
+
 ### Endpoints:
 
 The API has 7 endpoints:
