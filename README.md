@@ -101,7 +101,7 @@ In case everything works well, the answer shall be like:
 ]
 ```
 
-<h3 align="center">Add items to cart (_need authentication_)</h3>
+<h3 align="center">Add items to cart <i>(need authentication)</i></h3>
 
 `POST /cart`
 
@@ -128,7 +128,7 @@ In case everything works well, the answer shall be like:
 }
 ```
 
-<h3 align="center">Get cart items (_need authentication_)</h3>
+<h3 align="center">Get cart items <i>(need authentication)</i></h3>
 
 The logged user can access his cart items through this endpoint.
 
@@ -152,7 +152,7 @@ In case everything works well, the answer shall be like:
 ]
 ```
 
-<h3 align="center">Update items' quantities in cart (_need authentication_)</h3>
+<h3 align="center">Update items' quantities in cart <i>(need authentication)</i></h3>
 
 The logged user can change item's quantities in cart through this endpoint.
 
@@ -179,7 +179,7 @@ In case everything works well, the answer shall be like:
 }
 ```
 
-<h3 align="center">Delete item from cart (_need authentication_)</h3>
+<h3 align="center">Delete item from cart <i>(need authentication)</i></h3>
 
 The logged user can delete items from cart through this endpoint.
 
