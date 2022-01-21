@@ -1,6 +1,6 @@
 # API - HamburgerAPP :hamburger:
 
-This is the back end off the hamburger app, developed to storage food data of the app, register new users and log users in. Only logged users can add items to cart.
+This is the back end of the hamburger app, developed to storage food data of the app, register new users and log users in. Only logged users can add items to cart.
 
 Heroku link: https://hamburgerapprlst.herokuapp.com/
 
