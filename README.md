@@ -17,7 +17,7 @@ The API has 7 endpoints:
 - /menulist -> get menu items (GET)
 - /cart?userId=:userId -> get user cart (GET) _need authentication_
 - /cart -> add item to cart (POST) _need authentication_
-- /cart/:itemId -> update quantity of item in cart or delete item _need authentication_
+- /cart/:itemId -> update quantity of item in cart or delete item (PATCH) _need authentication_
 
 ### Request body and expected answers:
 
